@@ -18,7 +18,7 @@ pipeline {
         timestamps()
 
         // Maximum time for the entire pipeline
-        timeout(time: 1, unit: 'MINUTES')
+        timeout(time: 30, unit: 'MINUTES')
     }
     parameters {
         string(
