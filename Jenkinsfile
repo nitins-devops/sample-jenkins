@@ -52,7 +52,12 @@ pipeline {
                 }
             }
         }
-        stage('store') { 
+        stage('store') {
+            when {
+                expression {
+                    params.ENVIRONMENT != 'sit'
+                }
+            }
             steps {
                 echo "This is store stage" 
             }
