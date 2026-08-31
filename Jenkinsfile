@@ -41,9 +41,9 @@ pipeline {
         stage('Test') {
             steps {
                 echo "This is Test stage"
-                if(param.ENVIRONMENT == "dev"){
+                if(params.ENVIRONMENT == "dev"){
                     echo "This is dev environment"
-                } else if (param.ENVIRONMENT == "sit") {
+                } else if (params.ENVIRONMENT == "sit") {
                     echo "This is sit environment"
                 } else {
                     echo "Other than dev and sit environment"
