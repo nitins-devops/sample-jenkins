@@ -24,7 +24,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "This is Test stage"
-                powershell 'Start-Sleep -Seconds 50'
+                powershell 'Start-Sleep -Seconds 90'
             }
         }
         stage('store') { 
