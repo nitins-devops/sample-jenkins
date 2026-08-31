@@ -21,9 +21,9 @@ pipeline {
         timeout(time: 30, unit: 'MINUTES')
     }
     parameters {
-        string(
+        choice(
             name: 'ENVIRONMENT',
-            defaultValue: 'dev',
+            choices: ['dev', 'sit', 'bat', 'nft', 'ite', 'prod'],
             description: 'Environment to deploy to'
         )
         choice(
