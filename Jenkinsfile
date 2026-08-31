@@ -41,7 +41,13 @@ pipeline {
         stage('Test') {
             steps {
                 echo "This is Test stage"
-                powershell 'Start-Sleep -Seconds 90'
+                if(param.ENVIRONMENT == "dev"){
+                    echo "This is dev environment"
+                } else if (param.ENVIRONMENT == "sit") {
+                    echo "This is sit environment"
+                } else {
+                    echo "Other than dev and sit environment"
+                }
             }
         }
         stage('store') { 
