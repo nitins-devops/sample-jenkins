@@ -19,6 +19,23 @@ pipeline {
 
         // Maximum time for the entire pipeline
         timeout(time: 1, unit: 'MINUTES')
+    }
+    parameters {
+        string(
+            name: 'ENVIRONMENT',
+            defaultValue: 'dev',
+            description: 'Environment to deploy to'
+        )
+        choice(
+            name: 'BUILD',
+            choices: ['NO', 'YES'],
+            description: 'Deploy after successful build?'
+        )
+        booleanParam(
+            name: 'RUN_TESTS',
+            defaultValue: true,
+            description: 'Run unit tests'
+        )
     }    
     stages {
         stage('Test') {
