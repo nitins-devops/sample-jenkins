@@ -47,7 +47,7 @@ pipeline {
                     } else if (params.ENVIRONMENT == "sit") {
                         echo "This is sit environment"
                     } else {
-                        echo "You have selected params.ENVIRONMENT"
+                        echo "You have selected - ${params.ENVIRONMENT}"
                     }
                 }
             }
