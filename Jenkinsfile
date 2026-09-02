@@ -53,7 +53,7 @@ pipeline {
                     } else if ((ENV == "sit") && (TEST == "false") && (DEP == "NO") ) {
                         echo "This is sit environment and don't want to execute test"
                     } else {
-                        echo "You have selected - ${ENV} and Test - ${TEST}"
+                        echo "You have selected - ${ENV} and Test - ${TEST} - app name - ${APP_NAME}"
                     }
                 }
             }
@@ -65,12 +65,14 @@ pipeline {
                 }
             }
             steps {
-                echo "This is store stage" 
+                echo "This is store stage"
+                echo "app name - ${APP_NAME}"
             }
         }
         stage('modify') { 
             steps {
-                echo "This is store stage" 
+                echo "This is store stage"
+                echo "app name - ${APP_NAME}"
             }
         }		
     }
