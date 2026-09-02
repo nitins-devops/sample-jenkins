@@ -66,9 +66,11 @@ pipeline {
                 }
             }
             steps {
-                echo "This is store stage"
-                echo "app name - ${APP_NAME}"
-                env.APP_NAME = "Updated again"
+                script {
+                    echo "This is store stage"
+                    echo "app name - ${APP_NAME}"
+                    env.APP_NAME = "Updated again"
+                }
             }
         }
         stage('modify') { 
