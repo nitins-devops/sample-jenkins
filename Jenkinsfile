@@ -40,6 +40,7 @@ pipeline {
     environment {
         APP_NAME = 'my-app'
         ENV = "${params.ENVIRONMENT}"
+        DEP = "${params.Deploy}"
         TEST = "${params.RUN_TESTS}"        
     }    
     stages {
@@ -47,9 +48,9 @@ pipeline {
             steps {
                 script {
                     echo "This is Test stage"
-                    if( (ENV == "dev") || (TEST == "true") ){
+                    if( (ENV == "dev") || (TEST == "true") || (DEP == "YES") ){
                         echo "This is dev environment and want to execute test"
-                    } else if ((ENV == "sit") || (TEST == "false") ) {
+                    } else if ((ENV == "sit") || (TEST == "false") || (DEP == "NO") ) {
                         echo "This is sit environment and don't want to execute test"
                     } else {
                         echo "You have selected - ${ENV} and Test - ${TEST}"
