@@ -54,7 +54,7 @@ pipeline {
                         echo "This is sit environment and don't want to execute test"
                     } else {
                         echo "You have selected - ${ENV} and Test - ${TEST} - app name - ${APP_NAME}"
-                        env.APP_NAME = "Updated value"
+                        APP_NAME = "Updated value"
                     }
                 }
             }
@@ -69,7 +69,7 @@ pipeline {
                 script {
                     echo "This is store stage"
                     echo "app name - ${APP_NAME}"
-                    env.APP_NAME = "Updated again"
+                    APP_NAME = "Updated again"
                 }
             }
         }
