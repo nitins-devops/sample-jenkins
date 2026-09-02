@@ -47,12 +47,12 @@ pipeline {
             steps {
                 script {
                     echo "This is Test stage"
-                    if(ENV == "dev"){
-                        echo "This is dev environment"
-                    } else if (ENV == "sit") {
-                        echo "This is sit environment"
+                    if( (ENV == "dev") && (TEST == "YES") ){
+                        echo "This is dev environment and want to execute test"
+                    } else if ((ENV == "sit") && (TEST == "NO") ) {
+                        echo "This is sit environment and don't want to execute test"
                     } else {
-                        echo "You have selected - ${ENV}"
+                        echo "You have selected - ${ENV} and Test - ${TEST}"
                     }
                 }
             }
