@@ -27,7 +27,7 @@ pipeline {
             description: 'Environment to deploy to'
         )
         choice(
-            name: 'BUILD',
+            name: 'Deploy',
             choices: ['NO', 'YES'],
             description: 'Deploy after successful build?'
         )
@@ -36,18 +36,23 @@ pipeline {
             defaultValue: true,
             description: 'Run unit tests'
         )
+    }
+    environment {
+        APP_NAME = 'my-app'
+        ENV = "${params.ENVIRONMENT}"
+        TEST = "${params.RUN_TESTS}"        
     }    
     stages {
         stage('Test') {
             steps {
                 script {
                     echo "This is Test stage"
-                    if(params.ENVIRONMENT == "dev"){
+                    if(ENV == "dev"){
                         echo "This is dev environment"
-                    } else if (params.ENVIRONMENT == "sit") {
+                    } else if (ENV == "sit") {
                         echo "This is sit environment"
                     } else {
-                        echo "You have selected - ${params.ENVIRONMENT}"
+                        echo "You have selected - ${ENV}"
                     }
                 }
             }
