@@ -73,6 +73,50 @@ pipeline {
                 }
             }
         }
+        stage('Trigger CI-Job') {
+            steps {
+                script {
+                    echo "Triggering downstream CI-Job..."
+
+                    def downstreamBuild = build(
+                        job: 'another-pipeline',
+                        wait: true,
+                        propagate: false,
+                        parameters: [
+                            string(
+                                name: 'ENV',
+                                value: 'sit'
+                            ),
+                            string(
+                                name: 'DEP',
+                                value: 'YES'
+                            ),
+                            booleanParam(
+                                name: 'RUN_TESTS',
+                                value: 'true'
+                            )
+                        ]
+                    )
+
+                    echo "======================================"
+                    echo "Downstream Job: CI-Job"
+                    echo "Build Number: ${downstreamBuild.number}"
+                    echo "Build Result: ${downstreamBuild.result}"
+                    echo "Build URL: ${downstreamBuild.absoluteUrl}"
+                    echo "======================================"
+
+                    if (downstreamBuild.result == 'SUCCESS') {
+                        echo "another-pipeline completed successfully"
+
+                    } else {
+                        echo "another-pipeline failed with status: ${downstreamBuild.result}"
+
+                        currentBuild.result = 'FAILURE'
+                        error("Downstream CI-Job failed")
+                    }
+                }
+            }
+        }        
         stage('modify') { 
             steps {
                 echo "This is modify stage"
