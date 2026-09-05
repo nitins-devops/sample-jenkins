@@ -81,25 +81,8 @@ pipeline {
         }		
     }
     post {
-
-        // Runs if pipeline succeeds
-        success {
-            echo 'Pipeline completed successfully.'
-        }
-
-        // Runs if pipeline fails
-        failure {
-            echo 'Pipeline failed.'
-        }
-
-        // Runs if pipeline is unstable
-        unstable {
-            echo 'Pipeline is unstable.'
-        }
-
-        // Runs if pipeline is aborted
-        aborted {
-            echo 'Pipeline was aborted.'
+        always {
+            echo "Build result: ${currentBuild.currentResult}"
         }
     }    
 }
