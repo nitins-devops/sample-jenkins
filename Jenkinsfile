@@ -49,7 +49,12 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git branch: 'main', url: 'https://github.com/nitins-devops/sample-git-repo.git'
+                dir('source-code') {
+                    git branch: 'main', url: 'https://github.com/nitins-devops/sample-git-repo.git'
+                }
+                dir('source-code') {
+                    sh 'ls -la'
+                }
             }
         }
         stage('Test') {
