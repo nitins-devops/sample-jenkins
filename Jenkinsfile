@@ -54,8 +54,11 @@ pipeline {
                         echo "This is sit environment and don't want to execute test"
                     } else {
                         echo "You have selected - ${ENV} and Test - ${TEST} - app name - ${APP_NAME}"
-                        APP_NAME = "Updated value"
+                        APP_NAME = "Updated value"                        
                     }
+                        sh '''
+                            mkdir test
+                        '''                    
                 }
             }
         }
