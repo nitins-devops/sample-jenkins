@@ -111,7 +111,7 @@ pipeline {
                     } else {
                         echo "another-pipeline failed with status: ${downstreamBuild.result}"
 
-                        currentBuild.result = 'FAILURE'
+                        # currentBuild.result = 'FAILURE'
                         error("Downstream CI-Job failed")
                     }
                 }
