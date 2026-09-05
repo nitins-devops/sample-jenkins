@@ -90,10 +90,6 @@ pipeline {
                             string(
                                 name: 'DEP',
                                 value: 'YES'
-                            ),
-                            booleanParam(
-                                name: 'RUN_TESTS',
-                                value: 'true'
                             )
                         ]
                     )
