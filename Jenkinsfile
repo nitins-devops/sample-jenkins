@@ -22,17 +22,17 @@ pipeline {
     }
     parameters {
         choice(
-            name: 'ENVIRONMENT',
+            name: 'ENV',
             choices: ['dev', 'sit', 'bat', 'nft', 'ite', 'prod'],
             description: 'Environment to deploy to'
         )
         choice(
-            name: 'Deploy',
+            name: 'DEP',
             choices: ['NO', 'YES'],
             description: 'Deploy after successful build?'
         )
         booleanParam(
-            name: 'RUN_TESTS',
+            name: 'TESTS',
             defaultValue: true,
             description: 'Run unit tests'
         )
