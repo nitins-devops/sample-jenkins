@@ -55,10 +55,7 @@ pipeline {
                     } else {
                         echo "You have selected - ${ENV} and Test - ${TEST} - app name - ${APP_NAME}"
                         APP_NAME = "Updated value"                        
-                    }
-                        sh '''
-                            mkdir test
-                        '''                    
+                    }                   
                 }
             }
         }
