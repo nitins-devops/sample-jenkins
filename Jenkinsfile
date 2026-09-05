@@ -53,7 +53,7 @@ pipeline {
             steps {
                 echo "Checking out source code..."
                 git branch: 'develop', url: 'https://github.com/nitins-devops/sample-git-repo.git'
-                git url: 'https://github.com/nitins-devops/test-repo.git'
+                git branch: 'main', url: 'https://github.com/nitins-devops/test-repo.git'
             }
         }
         stage('Test') {            
