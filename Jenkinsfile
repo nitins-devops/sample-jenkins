@@ -92,7 +92,7 @@ pipeline {
                                 value: params.Deploy
                             ),
                             string(
-                                name: 'TESTS',
+                                name: 'TEST',
                                 value: 'true'
                             )
                         ]
