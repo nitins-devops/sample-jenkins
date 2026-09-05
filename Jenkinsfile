@@ -90,6 +90,10 @@ pipeline {
                             string(
                                 name: 'DEP',
                                 value: 'YES'
+                            ),
+                            string(
+                                name: 'TESTS',
+                                value: ''
                             )
                         ]
                     )
