@@ -45,6 +45,11 @@ pipeline {
     }    
     stages {        
         stage('Test') {
+            stage('Cleanup') {
+                steps {
+                    cleanWs()
+                }
+            }            
             steps {
                 script {
                     echo "This is Test stage"
