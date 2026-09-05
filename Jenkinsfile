@@ -56,9 +56,6 @@ pipeline {
                         echo "You have selected - ${ENV} and Test - ${TEST} - app name - ${APP_NAME}"
                         APP_NAME = "Updated value"                        
                     }
-                    sh '''
-                        mkdir test
-                    '''
                 }
             }
         }
@@ -81,7 +78,28 @@ pipeline {
                 echo "This is modify stage"
                 echo "app name - ${APP_NAME}"
             }
-        }		
+        }
+        stage('Send Email') {
+            steps {
+                emailext(
+                    subject: "Jenkins Build - ${currentBuild.currentResult}",
+                    body: """
+                        Hello,
+        
+                        Jenkins build has completed.
+        
+                        Job: ${env.JOB_NAME}
+                        Build Number: ${env.BUILD_NUMBER}
+                        Status: ${currentBuild.currentResult}
+                        Build URL: ${env.BUILD_URL}
+        
+                        Regards,
+                        Jenkins
+                    """,
+                    to: 'amberambreen01@gmail.com'
+                )
+            }
+        }        
     }
     post {
         always {
