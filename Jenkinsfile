@@ -31,11 +31,6 @@ pipeline {
             choices: ['NO', 'YES'],
             description: 'Deploy after successful build?'
         )
-        booleanParam(
-            name: 'TESTS',
-            defaultValue: true,
-            description: 'Run unit tests'
-        )
     }
     environment {
         APP_NAME = 'my-app'
