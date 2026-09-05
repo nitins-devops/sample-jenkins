@@ -47,6 +47,12 @@ pipeline {
         TEST = "${params.RUN_TESTS}"        
     }    
     stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the Jenkins-configured SCM
+                checkout scm
+            }
+        }
         stage('Test') {
             steps {
                 script {
