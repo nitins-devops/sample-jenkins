@@ -49,8 +49,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout the Jenkins-configured SCM
-                checkout scm
+                git branch: 'main', url: 'https://github.com/nitins-devops/sample-git-repo.git'
             }
         }
         stage('Test') {
