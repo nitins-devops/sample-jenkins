@@ -80,7 +80,7 @@ pipeline {
 
                     def downstreamBuild = build(
                         job: 'another-pipeline',
-                        wait: false,
+                        wait: true,
                         propagate: false,
                         parameters: [
                             string(
