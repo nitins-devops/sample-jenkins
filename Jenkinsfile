@@ -85,15 +85,15 @@ pipeline {
                         parameters: [
                             string(
                                 name: 'ENV',
-                                value: 'params.ENVIRONMENT'
+                                value: params.ENVIRONMENT
                             ),
                             string(
                                 name: 'DEP',
-                                value: 'params.Deploy'
+                                value: params.Deploy
                             ),
                             string(
                                 name: 'TESTS',
-                                value: 'params.RUN_TESTS'
+                                value: params.RUN_TESTS
                             )
                         ]
                     )
