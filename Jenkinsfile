@@ -31,9 +31,10 @@ pipeline {
             choices: ['NO', 'YES'],
             description: 'Deploy after successful build?'
         )
-        booleanParam(
-            name: 'RUN_TESTS',
-            description: 'Run unit tests'
+        string(
+            name: 'TEST',
+            defaultValue: '',
+            description: 'TEST to execute to'
         )        
     }
     environment {
@@ -42,7 +43,16 @@ pipeline {
         DEP = "${params.Deploy}"
         TEST = "${params.RUN_TESTS}"        
     }    
-    stages {        
+    stages {
+        stage('Validate Parameters') {
+            steps {
+                script {
+                    if (!params.TEST?.trim()) {
+                        error('TEST parameter is mandatory')
+                    }
+                }
+            }
+        }
         stage('Test') {
             steps {
                 script {
