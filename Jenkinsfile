@@ -85,7 +85,11 @@ pipeline {
     }
     post {
         always {
-            echo "Build result: ${currentBuild.currentResult}"
+            echo "Build number: ${currentBuild.number}"
+            echo "Build result: ${currentBuild.result}"
+            echo "Build display name: ${currentBuild.displayName}"
+            echo "Build URL: ${currentBuild.absoluteUrl}"
+            echo "Build duration: ${currentBuild.durationString}"
         }
     }    
 }
