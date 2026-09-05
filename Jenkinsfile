@@ -93,7 +93,7 @@ pipeline {
                             ),
                             string(
                                 name: 'TESTS',
-                                value: params.RUN_TESTS
+                                value: 'true'
                             )
                         ]
                     )
