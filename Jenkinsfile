@@ -44,12 +44,7 @@ pipeline {
         TEST = "${params.RUN_TESTS}"        
     }    
     stages {        
-        stage('Test') {
-            stage('Cleanup') {
-                steps {
-                    cleanWs()
-                }
-            }            
+        stage('Test') {            
             steps {
                 script {
                     echo "This is Test stage"
@@ -98,7 +93,7 @@ pipeline {
                             ),
                             string(
                                 name: 'TEST',
-                                value: ''
+                                value: 'test'
                             )
                         ]
                     )
@@ -129,6 +124,7 @@ pipeline {
     }
     post {
         always {
+            cleanWs()
             echo "Build number: ${currentBuild.number}"
             echo "Build result: ${currentBuild.result}"
             echo "Build display name: ${currentBuild.displayName}"
