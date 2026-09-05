@@ -93,7 +93,7 @@ pipeline {
                             ),
                             string(
                                 name: 'TEST',
-                                value: 'true'
+                                value: ''
                             )
                         ]
                     )
