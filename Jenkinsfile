@@ -43,7 +43,18 @@ pipeline {
         DEP = "${params.Deploy}"
         TEST = "${params.RUN_TESTS}"        
     }    
-    stages {        
+    stages {
+        stage('Cleanup') {
+            steps {
+                cleanWs()
+            }
+        }  
+        stage('Checkout') {
+            steps {
+                echo "Checking out source code..."
+                git 'https://github.com/nitins-devops/sample-git-repo.git' 
+            }
+        }
         stage('Test') {            
             steps {
                 script {
@@ -124,7 +135,6 @@ pipeline {
     }
     post {
         always {
-            cleanWs()
             echo "Build number: ${currentBuild.number}"
             echo "Build result: ${currentBuild.result}"
             echo "Build display name: ${currentBuild.displayName}"
