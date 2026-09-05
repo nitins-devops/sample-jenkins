@@ -46,16 +46,7 @@ pipeline {
         DEP = "${params.Deploy}"
         TEST = "${params.RUN_TESTS}"        
     }    
-    stages {
-        stage('Checkout') {
-            steps {
-                sh '''
-                    mkdir -p my-source
-                    cd my-source
-                    git clone --branch main https://github.com/nitins-devops/sample-git-repo.git .
-                '''
-            }
-        }        
+    stages {        
         stage('Test') {
             steps {
                 script {
